@@ -1,0 +1,35 @@
+<table border="1">
+    <tr>
+        <td>Employee Id</td>
+        <td>{{empid}}</td>
+    </tr>
+    <tr>
+        <td>Employee Name</td>
+        <td>{{emp.ename}}</td>
+    </tr>
+    <tr *ngIf="showDetails">
+        <td>Gender</td>
+        <td>{{emp.gender}}</td>
+    </tr>
+    <tr *ngIf="showDetails">
+        <td>Salary</td>
+        <td>{{emp.salary}}</td>
+    </tr>
+    <tr *ngIf="showDetails">
+        <td>DOB</td>
+        <td>{{emp.dob}}</td>
+    </tr>
+</table>
+<br/>
+<br/>
+<button (click)="toggle()">
+  {{showDetails?'Hide':'Show'}}
+</button>
+
+
+<div>
+    {{someText}}
+</div>
+<div [innerHtml]="someText">
+
+</div>

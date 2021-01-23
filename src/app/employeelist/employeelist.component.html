@@ -1,0 +1,31 @@
+<app-employeecount [all]="getEmployeeCount()" [male]="getMaleEmployeeCount()" [female]="getFemaleEmployeeCount()" (countRadioButtonSelectionChanged)="onEmployeeCountRadioButtonChange($event)"></app-employeecount>
+
+<br/>
+<br/>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Employee Id</th>
+            <th>Employee Name</th>
+            <th>Gender</th>
+            <th>Salary</th>
+            <th>DOB</th>
+            <th>Address</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let e of employees; let i=index">
+            <tr *ngIf="selectedEmployeeCountRadioButton === 'All'  || selectedEmployeeCountRadioButton === e.gender">
+                <td><a [routerLink]="['/emps', e.empid]">{{e.empid}}</a></td>
+                <td>{{e.ename | uppercase | title: e.gender }}</td>
+                <td>{{e.gender}}</td>
+                <td>{{e.salary | currency:'INR'}}</td>
+                <td>{{e.dob | date:'dd-MMM-yyyy' | uppercase}}</td>
+                <td>{{e.address}}</td>
+                <td><a class="btn btn-danger" (click)="deleteEmployee(i)">Delete</a></td>
+            </tr>
+        </ng-container>
+    </tbody>
+</table>
